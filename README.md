@@ -1,6 +1,6 @@
-## SpIke aNd Gamma probabilistic model
+## Zero-Inflated Gamma probabilistic model
 
-This code implements the Spike+Gamma encoding and decoding model for post-deconvolved calcium imaging traces.
+This code implements the Zero-Inflated Gamma encoding and decoding model for post-deconvolved calcium imaging traces.
 
 ## Tutorial
 
@@ -12,4 +12,4 @@ The code is written in Python 3.6. In addition to standard scientific Python lib
 
 - Tensorflow (>=1.9.0)
 
-To check out, run `git clone https://github.com/zhd96/SING.git`
+To check out, run `git clone https://github.com/zhd96/zig.git`

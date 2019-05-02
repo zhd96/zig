@@ -228,7 +228,7 @@ def plotSamplePm(Y_real, p_poi, p_ber, p_sng, hd, p_sngr=None,ss=0,bins=36,fsz=1
         ax3.xaxis.set_major_locator(ticker.MaxNLocator(nbins=4,min_n_ticks=4,prune=None))
         ax3.yaxis.set_major_locator(ticker.MaxNLocator(nbins=4,min_n_ticks=4,prune=None))  
         ax3.xaxis.set_major_formatter(ticker.FormatStrFormatter('%.1f'))
-        ax3.set_title('Spike and gamma',fontsize=fsz, fontweight='bold');
+        ax3.set_title('ZIG',fontsize=fsz, fontweight='bold');
         plt.tight_layout();
     else:
         fig = plt.figure(figsize=(24,4));
@@ -256,7 +256,7 @@ def plotSamplePm(Y_real, p_poi, p_ber, p_sng, hd, p_sngr=None,ss=0,bins=36,fsz=1
         ax3.plot([0, rg], [0, rg], ls="--", c="red")
         ax3.spines['top'].set_visible(False)
         ax3.spines['right'].set_visible(False)      
-        plt.title('spike and gamma');
+        plt.title('ZIG');
 
         ax4 = plt.subplot(1,4,4);
         rg = (1-p_sngr).sum(axis=0).max()
@@ -264,7 +264,7 @@ def plotSamplePm(Y_real, p_poi, p_ber, p_sng, hd, p_sngr=None,ss=0,bins=36,fsz=1
         ax4.plot([0, rg], [0, rg], ls="--", c="red")
         ax4.spines['top'].set_visible(False)
         ax4.spines['right'].set_visible(False)   
-        plt.title('spike and gamma relax');
+        plt.title('ZIG relax');
 
         plt.tight_layout();        
     return fig
@@ -370,7 +370,7 @@ def plotSampleVarm(Y_real, y_poisson, y_bernoulli, y_gamma_real, y_gammar, hd, y
         ax4.xaxis.set_major_locator(ticker.MaxNLocator(nbins=4,min_n_ticks=4,prune=None))  
         ax4.yaxis.set_major_locator(ticker.MaxNLocator(nbins=4,min_n_ticks=4,prune=None))  
         ax4.xaxis.set_major_formatter(ticker.FormatStrFormatter('%.1f'))
-        ax4.set_title('Spike and gamma',fontsize=fsz,fontweight='bold');
+        ax4.set_title('ZIG',fontsize=fsz,fontweight='bold');
 
         plt.tight_layout();
     else:
@@ -400,7 +400,7 @@ def plotSampleVarm(Y_real, y_poisson, y_bernoulli, y_gamma_real, y_gammar, hd, y
         plt.plot([0, rg], [0, rg], ls="--", c="red")
         plt.ylabel("real obs var")
         plt.xlabel("sample obs var")
-        plt.title('spike and gamma');
+        plt.title('ZIG');
         plt.subplot(1,5,4);
         rg = y_gamma_real.var(axis=0).max()
         plt.plot(y_gamma_real.var(axis=0), Y_real.var(axis=0), "x")
@@ -417,7 +417,7 @@ def plotSampleVarm(Y_real, y_poisson, y_bernoulli, y_gamma_real, y_gammar, hd, y
         plt.plot([0, rg], [0, rg], ls="--", c="red")
         plt.ylabel("real obs var")
         plt.xlabel("sample obs var")
-        plt.title('spike and gamma relax');        
+        plt.title('ZIG relax');        
         plt.tight_layout();
     
     return fig
@@ -521,7 +521,7 @@ def plotSampleRatem(Y_real, hd, y_poisson, y_bernoulli, y_gamma_real, y_gammar, 
         ax4.xaxis.set_major_formatter(ticker.FormatStrFormatter('%.1f'))
         ax4.xaxis.set_major_locator(ticker.MaxNLocator(nbins=4,min_n_ticks=4,prune=None,integer=True))
         ax4.yaxis.set_major_locator(ticker.MaxNLocator(nbins=4,min_n_ticks=4,prune=None))  
-        ax4.set_title('Spike and gamma',fontsize=fsz,fontweight='bold');
+        ax4.set_title('ZIG',fontsize=fsz,fontweight='bold');
 
         plt.tight_layout();
         
@@ -548,7 +548,7 @@ def plotSampleRatem(Y_real, hd, y_poisson, y_bernoulli, y_gamma_real, y_gammar, 
         plt.plot([0, rg], [0, rg], ls="--", c="red")
         plt.xlabel("sample obs rate")
         plt.ylabel("real obs rate")
-        plt.title('spike and gamma');
+        plt.title('ZIG');
         plt.subplot(1,5,4);
         rg = rate_gam.max();
         plt.plot(rate_gam[:], rate_real[:], "x")
@@ -562,7 +562,7 @@ def plotSampleRatem(Y_real, hd, y_poisson, y_bernoulli, y_gamma_real, y_gammar, 
         plt.plot([0, rg], [0, rg], ls="--", c="red")
         plt.xlabel("sample obs rate")
         plt.ylabel("real obs rate")
-        plt.title('spike and gamma relax');        
+        plt.title('ZIG relax');        
         plt.tight_layout();        
     return fig
     
@@ -610,7 +610,7 @@ def plotTC(num, spl_values_poi, spl_values_ber, spl_values_gam, spl_values_sngr,
         plt.plot(spl_values_poi[:,ii], 'b-',linewidth=3,label='Poisson');
         plt.plot(spl_values_ber[:,ii], 'y-',linewidth=3,label='Bernoulli');
         plt.plot(spl_values_gam[:,ii], 'g-',linewidth=3,label='Gamma')
-        plt.plot(spl_values_sngr[:,ii], 'r-', linewidth=3,label='SNG');
+        plt.plot(spl_values_sngr[:,ii], 'r-', linewidth=3,label='ZIG');
         
         plt.setp(ax.get_xticklabels(), fontsize=fs)
         plt.setp(ax.get_yticklabels(), fontsize=fs)
@@ -647,9 +647,9 @@ def plotTC2(num, spl_values_poi, spl_values_ber, spl_values_gam, spl_values_sngr
         plt.plot(spl_values_poi[:,ii], label='Poisson');
         plt.plot(spl_values_ber[:,ii], label='Bernoulli');
         plt.plot(spl_values_gam[:,ii], label='Gamma')
-        plt.plot(spl_values_sngr[:,ii], label='SNG');
+        plt.plot(spl_values_sngr[:,ii], label='ZIG');
         
-        #plt.plot(spl_values_sng[:,2*ii], label='sng');
+        #plt.plot(spl_values_sng[:,2*ii], label='ZIG');
         #plt.plot(spl_values_ber[:,2*ii]*(spl_values_poi[:,2*ii].max()/spl_values_ber[:,2*ii].max()), label='bernoulli');
         plt.plot(tuning_curve[:,ii], '--', label='real');
         plt.ylabel(str(2*ii+1))
@@ -664,7 +664,7 @@ def plotTC2(num, spl_values_poi, spl_values_ber, spl_values_gam, spl_values_sngr
         plt.plot(spl_values_poi[:,ii], label='Poisson');
         plt.plot(spl_values_ber[:,ii], label='Bernoulli');
         plt.plot(spl_values_gam[:,ii], label='Gamma')
-        plt.plot(spl_values_sngr[:,ii], label='SNG');
+        plt.plot(spl_values_sngr[:,ii], label='ZIG');
         plt.plot(tuning_curve2[:,ii], '--', label='real');
         if ii==0:
             plt.title('test data')
@@ -722,7 +722,7 @@ def plotCdfSlabm(Y_real, hd_temp, spl_values_poi, spl_values_ber, spl_values_the
         ax.plot(x[1:], y1[1:], 'b-',linewidth=3,label='Poisson');
         ax.plot(x[1:], y4[1:], 'y-',linewidth=3,label='Bernoulli');
         ax.plot(x[1:], y3[1:], 'g-',linewidth=3,label='Gamma');
-        ax.plot(x[1:], y2[1:], 'r-',linewidth=3,label='SNG');
+        ax.plot(x[1:], y2[1:], 'r-',linewidth=3,label='ZIG');
         
         plt.setp(ax.get_xticklabels(), fontsize=sz)
         plt.setp(ax.get_yticklabels(), fontsize=sz)
@@ -779,7 +779,7 @@ def plotCdfSSm(Y_real, hd_temp, spl_values_poi, spl_values_ber, spl_values_theta
         ax.plot(x[:], y1[:], 'b-',linewidth=3,label='Poisson');
         ax.plot(x[:], y4[:], 'y-',linewidth=3,label='Bernoulli');
         ax.plot(x[:], y3[:], 'g-',linewidth=3,label='Gamma');
-        ax.plot(x[:], y2[:], 'r-',linewidth=3,label='SNG');
+        ax.plot(x[:], y2[:], 'r-',linewidth=3,label='ZIG');
         
         plt.setp(ax.get_xticklabels(), fontsize=14)
         plt.setp(ax.get_yticklabels(), fontsize=14)
@@ -1789,7 +1789,7 @@ def plotPosterior(nTrain, hd, poi_mean_decode, sng_mean_decode, ber_mean_decode,
     plt.fill_between(np.linspace(T_bins_left,T_bins_right-1,T_bins_right-T_bins_left),
                      sng_conf_interval[T_bins_left:T_bins_right,0],
                      sng_conf_interval[T_bins_left:T_bins_right,1],color="#b9cfe7", edgecolor="")
-    plt.title("spike and gamma");
+    plt.title("ZIG");
 
     plt.tight_layout()
     return fig
@@ -1805,11 +1805,11 @@ def plotPos(pos,poi_mean_pos_decode,sng_mean_pos_decode,sngr_mean_pos_decode,ber
     plt.subplot(4,1,2)
     plt.plot(pos[start:end])
     plt.plot(sng_mean_pos_decode[start:end], 'rx', alpha=0.5)
-    plt.title('spike and gamma')
+    plt.title('ZIG')
     plt.subplot(4,1,3)
     plt.plot(pos[start:end])
     plt.plot(sngr_mean_pos_decode[start:end], 'rx', alpha=0.5)
-    plt.title('spike and gamma relax')
+    plt.title('ZIG relax')
 
     plt.subplot(4,1,4)
     plt.plot(pos[start:end])
@@ -1829,11 +1829,11 @@ def plotPosRes(pos,poi_mean_pos_decode,sng_mean_pos_decode,sngr_mean_pos_decode,
     plt.subplot(4,1,2)
     #plt.plot(pos[tempp][start:end])
     plt.plot((sng_mean_pos_decode-pos)[start:end], 'rx', alpha=0.5)
-    plt.title('spike and gamma')
+    plt.title('ZIG')
     plt.subplot(4,1,3)
     #plt.plot(pos[tempp][start:end])
     plt.plot((sngr_mean_pos_decode-pos)[start:end], 'rx', alpha=0.5)
-    plt.title('spike and gamma relax')    
+    plt.title('ZIG relax')    
     plt.subplot(4,1,4)
     #plt.plot(pos[tempp][start:end])
     plt.plot((ber_mean_pos_decode-pos)[start:end], 'rx', alpha=0.5)
@@ -1846,7 +1846,7 @@ def plotCIcov_med(conf_rate_ci, width_med_ci, hdr = False):
     sz=15;
     plt.subplot(1,2,1)
 
-    plt.plot(width_med_ci[0,:,0], conf_rate_ci[0,:,0],label='sng')
+    plt.plot(width_med_ci[0,:,0], conf_rate_ci[0,:,0],label='ZIG')
     plt.plot(width_med_ci[1,:,0], conf_rate_ci[1,:,0],label='sng rlx')
     plt.plot(width_med_ci[2,:,0], conf_rate_ci[2,:,0],label='poisson')
     plt.plot(width_med_ci[3,:,0], conf_rate_ci[3,:,0],label='bernoulli')
@@ -1863,7 +1863,7 @@ def plotCIcov_med(conf_rate_ci, width_med_ci, hdr = False):
         plt.ylabel('CI coverage rate')
 
     plt.subplot(1,2,2)
-    plt.plot(width_med_ci[0,:,1], conf_rate_ci[0,:,1],label='sng')
+    plt.plot(width_med_ci[0,:,1], conf_rate_ci[0,:,1],label='ZIG')
     plt.plot(width_med_ci[1,:,1], conf_rate_ci[1,:,1],label='sng rlx')
     plt.plot(width_med_ci[2,:,1], conf_rate_ci[2,:,1],label='poisson')
     plt.plot(width_med_ci[3,:,1], conf_rate_ci[3,:,1],label='bernoulli')
@@ -1907,12 +1907,12 @@ def plotCIcov_mean(conf_rate_ci, width_mean_ci, hdr=False, drop=False):
     ax1.yaxis.set_major_formatter(ticker.FormatStrFormatter('%.2f'))
     #ax1.xaxis.set_major_formatter(ticker.FormatStrFormatter('%.2f'))
 
-    #plt.plot(width_mean_ci[0,:,0], conf_rate_ci[0,:,0],label='sng')
+    #plt.plot(width_mean_ci[0,:,0], conf_rate_ci[0,:,0],label='ZIG')
     ax1.plot(width_mean_ci[1,:,0], conf_rate_ci[1,:,0],'b-',linewidth=3,label='Poisson')
     ax1.plot(width_mean_ci[2,:,0], conf_rate_ci[2,:,0],'y-',linewidth=3,label='Bernoulli')
     if not drop:
         ax1.plot(width_mean_ci[3,:,0], conf_rate_ci[3,:,0],'g-',linewidth=3,label='Gamma')
-    ax1.plot(width_mean_ci[0,:,0], conf_rate_ci[0,:,0],'r-',linewidth=3,label='SNG')
+    ax1.plot(width_mean_ci[0,:,0], conf_rate_ci[0,:,0],'r-',linewidth=3,label='ZIG')
 
     ax1.legend(fontsize=sz);
 
@@ -1934,12 +1934,12 @@ def plotCIcov_mean(conf_rate_ci, width_mean_ci, hdr=False, drop=False):
     ax2.yaxis.set_major_formatter(ticker.FormatStrFormatter('%.2f'))
     #ax2.xaxis.set_major_formatter(ticker.FormatStrFormatter('%.2f'))
 
-    #plt.plot(width_mean_ci[0,:,0], conf_rate_ci[0,:,0],label='sng')
+    #plt.plot(width_mean_ci[0,:,0], conf_rate_ci[0,:,0],label='ZIG')
     ax2.plot(width_mean_ci[1,:,1], conf_rate_ci[1,:,1],'b-',linewidth=3,label='Poisson')
     ax2.plot(width_mean_ci[2,:,1], conf_rate_ci[2,:,1],'y-',linewidth=3,label='Bernoulli')
     if not drop:
         ax2.plot(width_mean_ci[3,:,1], conf_rate_ci[3,:,1],'g-',linewidth=3,label='Gamma')
-    ax2.plot(width_mean_ci[0,:,1], conf_rate_ci[0,:,1],'r-',linewidth=3,label='SNG')
+    ax2.plot(width_mean_ci[0,:,1], conf_rate_ci[0,:,1],'r-',linewidth=3,label='ZIG')
 
     plt.tight_layout()
     return fig
@@ -1970,12 +1970,12 @@ def plotCIcov_meanv(conf_rate_ci, width_mean_ci, hdr=False, drop=False):
     ax1.yaxis.set_major_formatter(ticker.FormatStrFormatter('%.2f'))
     #ax1.xaxis.set_major_formatter(ticker.FormatStrFormatter('%.2f'))
 
-    #plt.plot(width_mean_ci[0,:,0], conf_rate_ci[0,:,0],label='sng')
+    #plt.plot(width_mean_ci[0,:,0], conf_rate_ci[0,:,0],label='ZIG')
     ax1.plot(width_mean_ci[1,:,0], conf_rate_ci[1,:,0],'b-',linewidth=3,label='Poisson')
     ax1.plot(width_mean_ci[2,:,0], conf_rate_ci[2,:,0],'y-',linewidth=3,label='Bernoulli')
     if not drop:
         ax1.plot(width_mean_ci[3,:,0], conf_rate_ci[3,:,0],'g-',linewidth=3,label='Gamma')
-    ax1.plot(width_mean_ci[0,:,0], conf_rate_ci[0,:,0],'r-',linewidth=3,label='SNG')
+    ax1.plot(width_mean_ci[0,:,0], conf_rate_ci[0,:,0],'r-',linewidth=3,label='ZIG')
 
     #ax1.legend(fontsize=sz);
 
@@ -1997,12 +1997,12 @@ def plotCIcov_meanv(conf_rate_ci, width_mean_ci, hdr=False, drop=False):
     #ax2.set_title('Test data',fontsize=sz,fontweight='bold');
     ax2.yaxis.set_major_formatter(ticker.FormatStrFormatter('%.2f'))
 
-    #plt.plot(width_mean_ci[0,:,0], conf_rate_ci[0,:,0],label='sng')
+    #plt.plot(width_mean_ci[0,:,0], conf_rate_ci[0,:,0],label='ZIG')
     ax2.plot(width_mean_ci[1,:,1], conf_rate_ci[1,:,1],'b-',linewidth=3,label='Poisson')
     ax2.plot(width_mean_ci[2,:,1], conf_rate_ci[2,:,1],'y-',linewidth=3,label='Bernoulli')
     if not drop:
         ax2.plot(width_mean_ci[3,:,1], conf_rate_ci[3,:,1],'g-',linewidth=3,label='Gamma')
-    ax2.plot(width_mean_ci[0,:,1], conf_rate_ci[0,:,1],'r-',linewidth=3,label='SNG')
+    ax2.plot(width_mean_ci[0,:,1], conf_rate_ci[0,:,1],'r-',linewidth=3,label='ZIG')
 
     plt.tight_layout()
     return fig
@@ -2032,12 +2032,12 @@ def plotCIcov_lev(conf_rate_ci, conf_level_list, hdr=False, real=False, drop=Fal
     ax1.yaxis.set_major_formatter(ticker.FormatStrFormatter('%.2f'))
     #ax1.xaxis.set_major_formatter(ticker.FormatStrFormatter('%.2f'))
 
-    #plt.plot(width_mean_ci[0,:,0], conf_rate_ci[0,:,0],label='sng')
+    #plt.plot(width_mean_ci[0,:,0], conf_rate_ci[0,:,0],label='ZIG')
     ax1.plot(conf_level_list, conf_rate_ci[1,:,0],'b-',linewidth=3,label='Poisson')
     ax1.plot(conf_level_list, conf_rate_ci[2,:,0],'y-',linewidth=3,label='Bernoulli')
     if not drop:
         ax1.plot(conf_level_list, conf_rate_ci[3,:,0],'g-',linewidth=3,label='Gamma')
-    ax1.plot(conf_level_list, conf_rate_ci[0,:,0],'r-',linewidth=3,label='SNG')
+    ax1.plot(conf_level_list, conf_rate_ci[0,:,0],'r-',linewidth=3,label='ZIG')
     if hdr:
         ax1.set_ylabel('HDR coverage rate (log scale)',fontsize=sz,fontweight='normal');
     else:
@@ -2084,12 +2084,12 @@ def plotCIcov_lev(conf_rate_ci, conf_level_list, hdr=False, real=False, drop=Fal
         ax2.set_xlim((conf_rate_ci.min()-0.1,3.1));
         ax2.plot([1,3], [1,3], ls="--", c="black");
 
-    #plt.plot(width_mean_ci[0,:,0], conf_rate_ci[0,:,0],label='sng')
+    #plt.plot(width_mean_ci[0,:,0], conf_rate_ci[0,:,0],label='ZIG')
     ax2.plot(conf_level_list, conf_rate_ci[1,:,1],'b-',linewidth=3,label='Poisson')
     ax2.plot(conf_level_list, conf_rate_ci[2,:,1],'y-',linewidth=3,label='Bernoulli')
     if not drop:
         ax2.plot(conf_level_list, conf_rate_ci[3,:,1],'g-',linewidth=3,label='Gamma')
-    ax2.plot(conf_level_list, conf_rate_ci[0,:,1],'r-',linewidth=3,label='SNG')
+    ax2.plot(conf_level_list, conf_rate_ci[0,:,1],'r-',linewidth=3,label='ZIG')
 
     plt.tight_layout()
     return fig
@@ -2119,12 +2119,12 @@ def plotCIcov_levv(conf_rate_ci, conf_level_list, hdr=False, real=False, drop=Fa
     ax1.yaxis.set_major_formatter(ticker.FormatStrFormatter('%.2f'))
     #ax1.xaxis.set_major_formatter(ticker.FormatStrFormatter('%.2f'))
 
-    #plt.plot(width_mean_ci[0,:,0], conf_rate_ci[0,:,0],label='sng')
+    #plt.plot(width_mean_ci[0,:,0], conf_rate_ci[0,:,0],label='ZIG')
     ax1.plot(conf_level_list, conf_rate_ci[1,:,0],'b-',linewidth=3,label='Poisson')
     ax1.plot(conf_level_list, conf_rate_ci[2,:,0],'y-',linewidth=3,label='Bernoulli')
     if not drop:
         ax1.plot(conf_level_list, conf_rate_ci[3,:,0],'g-',linewidth=3,label='Gamma')
-    ax1.plot(conf_level_list, conf_rate_ci[0,:,0],'r-',linewidth=3,label='SNG')
+    ax1.plot(conf_level_list, conf_rate_ci[0,:,0],'r-',linewidth=3,label='ZIG')
     if hdr:
         ax.set_ylabel('HDR coverage rate (log scale)',fontsize=sz,fontweight='normal',labelpad=26);
     else:
@@ -2174,12 +2174,12 @@ def plotCIcov_levv(conf_rate_ci, conf_level_list, hdr=False, real=False, drop=Fa
         ax2.set_yticklabels(labels[:]);
         ax2.plot([1,3], [1,3], ls="--", c="black");
 
-    #plt.plot(width_mean_ci[0,:,0], conf_rate_ci[0,:,0],label='sng')
+    #plt.plot(width_mean_ci[0,:,0], conf_rate_ci[0,:,0],label='ZIG')
     ax2.plot(conf_level_list, conf_rate_ci[1,:,1],'b-',linewidth=3,label='Poisson')
     ax2.plot(conf_level_list, conf_rate_ci[2,:,1],'y-',linewidth=3,label='Bernoulli')
     if not drop:
         ax2.plot(conf_level_list, conf_rate_ci[3,:,1],'g-',linewidth=3,label='Gamma')
-    ax2.plot(conf_level_list, conf_rate_ci[0,:,1],'r-',linewidth=3,label='SNG')
+    ax2.plot(conf_level_list, conf_rate_ci[0,:,1],'r-',linewidth=3,label='ZIG')
 
     plt.tight_layout()
     return fig
@@ -2210,11 +2210,11 @@ def plotErrSmin(error_mean_mat, error_mean_bs,fsz=15):
     #ax1.yaxis.set_major_formatter(ticker.FormatStrFormatter('%.1f'))
     #ax1.xaxis.set_major_formatter(ticker.FormatStrFormatter('%.1f'))
 
-    #plt.plot(width_mean_ci[0,:,0], conf_rate_ci[0,:,0],label='sng')
+    #plt.plot(width_mean_ci[0,:,0], conf_rate_ci[0,:,0],label='ZIG')
     ax1.plot(error_mean_mat[:,0,0],'b-',linewidth=3,label='Poisson')
     ax1.plot(error_mean_mat[:,0,1],'y-',linewidth=3,label='Bernoulli')
     ax1.plot(error_mean_mat[:,0,4],'g-',linewidth=3,label='Gamma')
-    ax1.plot(error_mean_mat[:,0,3],'r-',linewidth=3,label='SNG')
+    ax1.plot(error_mean_mat[:,0,3],'r-',linewidth=3,label='ZIG')
     if error_mean_bs is not None:
         ax1.axhline(y=error_mean_bs[0],linestyle='--',linewidth=3,label='Pois on spikes');
         ax1.set_ylim((min(error_mean_mat.min(), error_mean_bs.min())-1., max(error_mean_mat.max(), error_mean_bs.max())+1.));
@@ -2251,11 +2251,11 @@ def plotErrSmin(error_mean_mat, error_mean_bs,fsz=15):
     else:
         ax2.set_ylim((error_mean_mat.min()-1., error_mean_mat.max()+1.));
 
-    #plt.plot(width_mean_ci[0,:,0], conf_rate_ci[0,:,0],label='sng')
+    #plt.plot(width_mean_ci[0,:,0], conf_rate_ci[0,:,0],label='ZIG')
     ax2.plot(error_mean_mat[:,1,0],'b-',linewidth=3,label='Poisson')
     ax2.plot(error_mean_mat[:,1,1],'y-',linewidth=3,label='Bernoulli')
     ax2.plot(error_mean_mat[:,1,4],'g-',linewidth=3,label='Gamma')
-    ax2.plot(error_mean_mat[:,1,3],'r-',linewidth=3,label='SNG')
+    ax2.plot(error_mean_mat[:,1,3],'r-',linewidth=3,label='ZIG')
     plt.draw();
     #labels = [l.get_text() for l in ax2.get_yticklabels()]
     #print(labels);
@@ -2308,7 +2308,7 @@ def plotErrBarSmin(error_mean_mat, error_mean_bs, error_var_mat, nTrain, nTest, 
     
     if not real:
         ax1.errorbar(xx,error_mean_mat[:,0,4],yerr=error_var_mat[:,0,4]/np.sqrt(nTrain),c='g',linewidth=3,label='Gamma');
-    ax1.errorbar(xx,error_mean_mat[:,0,3],yerr=error_var_mat[:,0,3]/np.sqrt(nTrain),c='r',linewidth=3,label='SNG');
+    ax1.errorbar(xx,error_mean_mat[:,0,3],yerr=error_var_mat[:,0,3]/np.sqrt(nTrain),c='r',linewidth=3,label='ZIG');
     if error_mean_bs is not None:
         ax1.axhline(y=error_mean_bs[0],linestyle='--',linewidth=3,label='Pois on spikes');
         ax1.set_ylim((min(np.delete(error_mean_mat,2,axis=2).min(), error_mean_bs.min())-1., max(np.delete(error_mean_mat,2,axis=2).max(), error_mean_bs.max())+1.));
@@ -2351,7 +2351,7 @@ def plotErrBarSmin(error_mean_mat, error_mean_bs, error_var_mat, nTrain, nTest, 
     
     if not real:
         ax2.errorbar(xx,error_mean_mat[:,1,4],yerr=error_var_mat[:,1,4]/np.sqrt(nTest),c='g',linewidth=3,label='Gamma');
-    ax2.errorbar(xx,error_mean_mat[:,1,3],yerr=error_var_mat[:,1,3]/np.sqrt(nTest),c='r',linewidth=3,label='SNG');
+    ax2.errorbar(xx,error_mean_mat[:,1,3],yerr=error_var_mat[:,1,3]/np.sqrt(nTest),c='r',linewidth=3,label='ZIG');
 
     plt.draw();
     #labels = [l.get_text() for l in ax2.get_yticklabels()]
@@ -2403,7 +2403,7 @@ def plotErrBarSminv(error_mean_mat, error_mean_bs, error_var_mat, nTrain, nTest,
     
     if not real:
         ax1.errorbar(xx,error_mean_mat[:,0,4],yerr=error_var_mat[:,0,4]/np.sqrt(nTrain),c='g',linewidth=3,label='Gamma');
-    ax1.errorbar(xx,error_mean_mat[:,0,3],yerr=error_var_mat[:,0,3]/np.sqrt(nTrain),c='r',linewidth=3,label='SNG');
+    ax1.errorbar(xx,error_mean_mat[:,0,3],yerr=error_var_mat[:,0,3]/np.sqrt(nTrain),c='r',linewidth=3,label='ZIG');
     if error_mean_bs is not None:
         ax1.axhline(y=error_mean_bs[0],linestyle='--',linewidth=3,label='Pois on spikes');
         ax1.set_ylim((min(np.delete(error_mean_mat,2,axis=2).min(), error_mean_bs.min())-1., max(np.delete(error_mean_mat,2,axis=2).max(), error_mean_bs.max())+1.));
@@ -2455,7 +2455,7 @@ def plotErrBarSminv(error_mean_mat, error_mean_bs, error_var_mat, nTrain, nTest,
     
     if not real:
         ax2.errorbar(xx,error_mean_mat[:,1,4],yerr=error_var_mat[:,1,4]/np.sqrt(nTest),c='g',linewidth=3,label='Gamma');
-    ax2.errorbar(xx,error_mean_mat[:,1,3],yerr=error_var_mat[:,1,3]/np.sqrt(nTest),c='r',linewidth=3,label='SNG');
+    ax2.errorbar(xx,error_mean_mat[:,1,3],yerr=error_var_mat[:,1,3]/np.sqrt(nTest),c='r',linewidth=3,label='ZIG');
 
     plt.draw();
     #labels = [l.get_text() for l in ax2.get_yticklabels()]
@@ -2506,7 +2506,7 @@ def plotErrBarSminL1(error_mean_mat, error_mean_bs, error_var_mat, nTrain, nTest
     ax1.errorbar(xx,error_mean_mat[:,0,0],yerr=error_var_mat[:,0,0]/np.sqrt(nTrain),c='b',linewidth=3, label='Poisson');
     ax1.errorbar(xx,error_mean_mat[:,0,1],yerr=error_var_mat[:,0,1]/np.sqrt(nTrain),c='y',linewidth=3,label='Bernoulli');
     #ax1.errorbar(xx,error_mean_mat[:,0,4],yerr=error_var_mat[:,0,4]/np.sqrt(nTrain),c='g',linewidth=3,label='Gamma');
-    ax1.errorbar(xx,error_mean_mat[:,0,3],yerr=error_var_mat[:,0,3]/np.sqrt(nTrain),c='r',linewidth=3,label='SNG');
+    ax1.errorbar(xx,error_mean_mat[:,0,3],yerr=error_var_mat[:,0,3]/np.sqrt(nTrain),c='r',linewidth=3,label='ZIG');
     if error_mean_bs is not None:
         ax1.axhline(y=error_mean_bs[0],linestyle='--',linewidth=3,label='SNG smin=0');
         ax1.set_ylim((min(error_mean_mat.min(), error_mean_bs.min())-1., max(error_mean_mat.max(), error_mean_bs.max())+1.));
@@ -2553,7 +2553,7 @@ def plotErrBarSminL1(error_mean_mat, error_mean_bs, error_var_mat, nTrain, nTest
     ax2.errorbar(xx,error_mean_mat[:,1,0],yerr=error_var_mat[:,1,0]/np.sqrt(nTest),c='b',linewidth=3,label='Poisson');
     ax2.errorbar(xx,error_mean_mat[:,1,1],yerr=error_var_mat[:,1,1]/np.sqrt(nTest),c='y',linewidth=3,label='Bernoulli');
     #ax2.errorbar(xx,error_mean_mat[:,1,4],yerr=error_var_mat[:,1,4]/np.sqrt(nTest),c='g',linewidth=3,label='Gamma');
-    ax2.errorbar(xx,error_mean_mat[:,1,3],yerr=error_var_mat[:,1,3]/np.sqrt(nTest),c='r',linewidth=3,label='SNG');
+    ax2.errorbar(xx,error_mean_mat[:,1,3],yerr=error_var_mat[:,1,3]/np.sqrt(nTest),c='r',linewidth=3,label='ZIG');
 
     plt.draw();
     #labels = [l.get_text() for l in ax2.get_yticklabels()]
@@ -2612,7 +2612,7 @@ def plotPostErrBarSmin(error_mean_mat, error_mean_bs, error_var_mat, nTrain, nTe
     ax1.errorbar(xx,error_mean_mat[:,0,0],yerr=error_var_mat[:,0,0]/np.sqrt(nTrain),c='b',linewidth=3, label='Poisson');
     ax1.errorbar(xx,error_mean_mat[:,0,1],yerr=error_var_mat[:,0,1]/np.sqrt(nTrain),c='y',linewidth=3,label='Bernoulli');
     ax1.errorbar(xx,error_mean_mat[:,0,4],yerr=error_var_mat[:,0,4]/np.sqrt(nTrain),c='g',linewidth=3,label='Gamma');
-    ax1.errorbar(xx,error_mean_mat[:,0,3],yerr=error_var_mat[:,0,3]/np.sqrt(nTrain),c='r',linewidth=3,label='SNG');
+    ax1.errorbar(xx,error_mean_mat[:,0,3],yerr=error_var_mat[:,0,3]/np.sqrt(nTrain),c='r',linewidth=3,label='ZIG');
     if error_mean_bs is not None:
         ax1.axhline(y=error_mean_bs[0],linestyle='--',linewidth=3,label='Pois on spikes');
         ax1.set_ylim((min(error_mean_mat.min(), error_mean_bs.min())-0.8, max(error_mean_mat.max(), error_mean_bs.max())+0.8));
@@ -2656,7 +2656,7 @@ def plotPostErrBarSmin(error_mean_mat, error_mean_bs, error_var_mat, nTrain, nTe
     ax2.errorbar(xx,error_mean_mat[:,1,0],yerr=error_var_mat[:,1,0]/np.sqrt(nTest),c='b',linewidth=3,label='Poisson');
     ax2.errorbar(xx,error_mean_mat[:,1,1],yerr=error_var_mat[:,1,1]/np.sqrt(nTest),c='y',linewidth=3,label='Bernoulli');
     ax2.errorbar(xx,error_mean_mat[:,1,4],yerr=error_var_mat[:,1,4]/np.sqrt(nTest),c='g',linewidth=3,label='Gamma');
-    ax2.errorbar(xx,error_mean_mat[:,1,3],yerr=error_var_mat[:,1,3]/np.sqrt(nTest),c='r',linewidth=3,label='SNG');
+    ax2.errorbar(xx,error_mean_mat[:,1,3],yerr=error_var_mat[:,1,3]/np.sqrt(nTest),c='r',linewidth=3,label='ZIG');
 
     plt.draw();
     #labels = [l.get_text() for l in ax2.get_yticklabels()]
@@ -2709,7 +2709,7 @@ def plotPostErrBarSminReal(error_mean_mat, error_mean_bs, error_var_mat, nTrain,
     ax1.errorbar(xx,error_mean_mat[:,0,1],yerr=error_var_mat[:,0,1]/np.sqrt(nTrain),c='y',linewidth=3,label='Bernoulli');
     if not drop:
         ax1.errorbar(xx,error_mean_mat[:,0,4],yerr=error_var_mat[:,0,4]/np.sqrt(nTrain),c='g',linewidth=3,label='Gamma');
-    ax1.errorbar(xx,error_mean_mat[:,0,3],yerr=error_var_mat[:,0,3]/np.sqrt(nTrain),c='r',linewidth=3,label='SNG');
+    ax1.errorbar(xx,error_mean_mat[:,0,3],yerr=error_var_mat[:,0,3]/np.sqrt(nTrain),c='r',linewidth=3,label='ZIG');
     
     if not drop:
         if error_mean_bs is not None:
@@ -2773,7 +2773,7 @@ def plotPostErrBarSminReal(error_mean_mat, error_mean_bs, error_var_mat, nTrain,
     ax2.errorbar(xx,error_mean_mat[:,1,1],yerr=error_var_mat[:,1,1]/np.sqrt(nTest),c='y',linewidth=3,label='Bernoulli');
     if not drop:
         ax2.errorbar(xx,error_mean_mat[:,1,4],yerr=error_var_mat[:,1,4]/np.sqrt(nTest),c='g',linewidth=3,label='Gamma');
-    ax2.errorbar(xx,error_mean_mat[:,1,3],yerr=error_var_mat[:,1,3]/np.sqrt(nTest),c='r',linewidth=3,label='SNG');
+    ax2.errorbar(xx,error_mean_mat[:,1,3],yerr=error_var_mat[:,1,3]/np.sqrt(nTest),c='r',linewidth=3,label='ZIG');
 
     plt.draw();
     #labels = [l.get_text() for l in ax2.get_yticklabels()]
@@ -2823,7 +2823,7 @@ def plotPostErrBarSminRealMed(error_mean_mat, error_mean_bs, error_var_mat, nTra
     ax1.errorbar(xx,error_mean_mat[:,0,1],yerr=error_var_mat[:,0,1]/np.sqrt(nTrain),c='y',linewidth=3,label='Bernoulli');
     if not drop:
         ax1.errorbar(xx,error_mean_mat[:,0,4],yerr=error_var_mat[:,0,4]/np.sqrt(nTrain),c='g',linewidth=3,label='Gamma');
-    ax1.errorbar(xx,error_mean_mat[:,0,3],yerr=error_var_mat[:,0,3]/np.sqrt(nTrain),c='r',linewidth=3,label='SNG');
+    ax1.errorbar(xx,error_mean_mat[:,0,3],yerr=error_var_mat[:,0,3]/np.sqrt(nTrain),c='r',linewidth=3,label='ZIG');
     if not drop:
         if error_mean_bs is not None:
             ax1.axhline(y=error_mean_bs[0],linestyle='--',linewidth=3,label='Random guess');
@@ -2883,7 +2883,7 @@ def plotPostErrBarSminRealMed(error_mean_mat, error_mean_bs, error_var_mat, nTra
     ax2.errorbar(xx,error_mean_mat[:,1,1],yerr=error_var_mat[:,1,1]/np.sqrt(nTest),c='y',linewidth=3,label='Bernoulli');
     if not drop:
         ax2.errorbar(xx,error_mean_mat[:,1,4],yerr=error_var_mat[:,1,4]/np.sqrt(nTest),c='g',linewidth=3,label='Gamma');
-    ax2.errorbar(xx,error_mean_mat[:,1,3],yerr=error_var_mat[:,1,3]/np.sqrt(nTest),c='r',linewidth=3,label='SNG');
+    ax2.errorbar(xx,error_mean_mat[:,1,3],yerr=error_var_mat[:,1,3]/np.sqrt(nTest),c='r',linewidth=3,label='ZIG');
 
     plt.draw();
     #labels = [l.get_text() for l in ax2.get_yticklabels()]
@@ -2929,7 +2929,7 @@ def plotPostErrBarSminRealMedL1(error_mean_mat, error_mean_bs, error_var_mat, nT
     ax1.errorbar(xx,error_mean_mat[:,0,0],yerr=error_var_mat[:,0,0]/np.sqrt(nTrain),c='b',linewidth=3, label='Poisson');
     ax1.errorbar(xx,error_mean_mat[:,0,1],yerr=error_var_mat[:,0,1]/np.sqrt(nTrain),c='y',linewidth=3,label='Bernoulli');
     #ax1.errorbar(xx,error_mean_mat[:,0,4],yerr=error_var_mat[:,0,4]/np.sqrt(nTrain),c='g',linewidth=3,label='Gamma');
-    ax1.errorbar(xx,error_mean_mat[:,0,3],yerr=error_var_mat[:,0,3]/np.sqrt(nTrain),c='r',linewidth=3,label='SNG');
+    ax1.errorbar(xx,error_mean_mat[:,0,3],yerr=error_var_mat[:,0,3]/np.sqrt(nTrain),c='r',linewidth=3,label='ZIG');
     if error_mean_bs is not None:
         ax1.axhline(y=error_mean_bs[0],linestyle='--',linewidth=3,label='SNG smin=0');
         ax1.set_ylim((min(error_mean_mat.min(), error_mean_bs.min())-0.3, max(error_mean_mat.max(), error_mean_bs.max())+0.3));
@@ -2973,7 +2973,7 @@ def plotPostErrBarSminRealMedL1(error_mean_mat, error_mean_bs, error_var_mat, nT
     ax2.errorbar(xx,error_mean_mat[:,1,0],yerr=error_var_mat[:,1,0]/np.sqrt(nTest),c='b',linewidth=3,label='Poisson');
     ax2.errorbar(xx,error_mean_mat[:,1,1],yerr=error_var_mat[:,1,1]/np.sqrt(nTest),c='y',linewidth=3,label='Bernoulli');
     #ax2.errorbar(xx,error_mean_mat[:,1,4],yerr=error_var_mat[:,1,4]/np.sqrt(nTest),c='g',linewidth=3,label='Gamma');
-    ax2.errorbar(xx,error_mean_mat[:,1,3],yerr=error_var_mat[:,1,3]/np.sqrt(nTest),c='r',linewidth=3,label='SNG');
+    ax2.errorbar(xx,error_mean_mat[:,1,3],yerr=error_var_mat[:,1,3]/np.sqrt(nTest),c='r',linewidth=3,label='ZIG');
 
     plt.draw();
     #labels = [l.get_text() for l in ax2.get_yticklabels()]
@@ -3025,7 +3025,7 @@ def plotErrBarSS(error_mean_mat, error_mean_bs, error_var_mat, nTrain, nTest, nu
     ax1.errorbar(xx,error_mean_mat[:,0,0],yerr=error_var_mat[:,0,0]/np.sqrt(nTrain),c='b',linewidth=3, label='Poisson');
     ax1.errorbar(xx,error_mean_mat[:,0,1],yerr=error_var_mat[:,0,1]/np.sqrt(nTrain),c='y',linewidth=3,label='Bernoulli');
     ax1.errorbar(xx,error_mean_mat[:,0,4],yerr=error_var_mat[:,0,4]/np.sqrt(nTrain),c='g',linewidth=3,label='Gamma');
-    ax1.errorbar(xx,error_mean_mat[:,0,3],yerr=error_var_mat[:,0,3]/np.sqrt(nTrain),c='r',linewidth=3,label='SNG');
+    ax1.errorbar(xx,error_mean_mat[:,0,3],yerr=error_var_mat[:,0,3]/np.sqrt(nTrain),c='r',linewidth=3,label='ZIG');
     if error_mean_bs is not None:
         ax1.axhline(y=error_mean_bs[0],linestyle='--',linewidth=3,label='Random guess');
         ax1.set_ylim((min(error_mean_mat.min(), error_mean_bs.min())-1., max(error_mean_mat.max(), error_mean_bs.max())+1.));
@@ -3066,7 +3066,7 @@ def plotErrBarSS(error_mean_mat, error_mean_bs, error_var_mat, nTrain, nTest, nu
     ax2.errorbar(xx,error_mean_mat[:,1,0],yerr=error_var_mat[:,1,0]/np.sqrt(nTest),c='b',linewidth=3,label='Poisson');
     ax2.errorbar(xx,error_mean_mat[:,1,1],yerr=error_var_mat[:,1,1]/np.sqrt(nTest),c='y',linewidth=3,label='Bernoulli');
     ax2.errorbar(xx,error_mean_mat[:,1,4],yerr=error_var_mat[:,1,4]/np.sqrt(nTest),c='g',linewidth=3,label='Gamma');
-    ax2.errorbar(xx,error_mean_mat[:,1,3],yerr=error_var_mat[:,1,3]/np.sqrt(nTest),c='r',linewidth=3,label='SNG');
+    ax2.errorbar(xx,error_mean_mat[:,1,3],yerr=error_var_mat[:,1,3]/np.sqrt(nTest),c='r',linewidth=3,label='ZIG');
 
     plt.draw();
     #labels = [l.get_text() for l in ax2.get_yticklabels()]
@@ -3130,7 +3130,7 @@ def plotPostErrBarSSReal(error_mean_mat, error_mean_bs, error_var_mat, nTrain, n
     ax1.errorbar(xx,error_mean_mat[:,0,1],yerr=error_var_mat[:,0,1]/np.sqrt(nTrain),c='y',linewidth=3,label='Bernoulli');
     if not drop:
         ax1.errorbar(xx,error_mean_mat[:,0,4],yerr=error_var_mat[:,0,4]/np.sqrt(nTrain),c='g',linewidth=3,label='Gamma');
-    ax1.errorbar(xx,error_mean_mat[:,0,3],yerr=error_var_mat[:,0,3]/np.sqrt(nTrain),c='r',linewidth=3,label='SNG');
+    ax1.errorbar(xx,error_mean_mat[:,0,3],yerr=error_var_mat[:,0,3]/np.sqrt(nTrain),c='r',linewidth=3,label='ZIG');
     if error_mean_bs is not None:
         ax1.axhline(y=error_mean_bs[0],linestyle='--',linewidth=3,label='Random guess');
         ax1.set_ylim((min(error_mean_mat.min(), error_mean_bs.min())-0.3, max(error_mean_mat.max(), error_mean_bs.max())+0.3));
@@ -3168,7 +3168,7 @@ def plotPostErrBarSSReal(error_mean_mat, error_mean_bs, error_var_mat, nTrain, n
     ax2.errorbar(xx,error_mean_mat[:,1,1],yerr=error_var_mat[:,1,1]/np.sqrt(nTest),c='y',linewidth=3,label='Bernoulli');
     if not drop:
         ax2.errorbar(xx,error_mean_mat[:,1,4],yerr=error_var_mat[:,1,4]/np.sqrt(nTest),c='g',linewidth=3,label='Gamma');
-    ax2.errorbar(xx,error_mean_mat[:,1,3],yerr=error_var_mat[:,1,3]/np.sqrt(nTest),c='r',linewidth=3,label='SNG');
+    ax2.errorbar(xx,error_mean_mat[:,1,3],yerr=error_var_mat[:,1,3]/np.sqrt(nTest),c='r',linewidth=3,label='ZIG');
 
     plt.draw();
     #labels = [l.get_text() for l in ax2.get_yticklabels()]
@@ -3220,7 +3220,7 @@ def plotPostErrBarSSRealMed(error_mean_mat, error_mean_bs, error_var_mat, nTrain
     ax1.errorbar(xx,error_mean_mat[:,0,1],yerr=error_var_mat[:,0,1]/np.sqrt(nTrain),c='y',linewidth=3,label='Bernoulli');
     if not drop:
         ax1.errorbar(xx,error_mean_mat[:,0,4],yerr=error_var_mat[:,0,4]/np.sqrt(nTrain),c='g',linewidth=3,label='Gamma');
-    ax1.errorbar(xx,error_mean_mat[:,0,3],yerr=error_var_mat[:,0,3]/np.sqrt(nTrain),c='r',linewidth=3,label='SNG');
+    ax1.errorbar(xx,error_mean_mat[:,0,3],yerr=error_var_mat[:,0,3]/np.sqrt(nTrain),c='r',linewidth=3,label='ZIG');
     if error_mean_bs is not None:
         ax1.axhline(y=error_mean_bs[0],linestyle='--',linewidth=3,label='Random guess');
         ax1.set_ylim((min(error_mean_mat.min(), error_mean_bs.min())-0.3, max(error_mean_mat.max(), error_mean_bs.max())+0.3));
@@ -3266,7 +3266,7 @@ def plotPostErrBarSSRealMed(error_mean_mat, error_mean_bs, error_var_mat, nTrain
     ax2.errorbar(xx,error_mean_mat[:,1,1],yerr=error_var_mat[:,1,1]/np.sqrt(nTest),c='y',linewidth=3,label='Bernoulli');
     if not drop:
         ax2.errorbar(xx,error_mean_mat[:,1,4],yerr=error_var_mat[:,1,4]/np.sqrt(nTest),c='g',linewidth=3,label='Gamma'); 
-    ax2.errorbar(xx,error_mean_mat[:,1,3],yerr=error_var_mat[:,1,3]/np.sqrt(nTest),c='r',linewidth=3,label='SNG');
+    ax2.errorbar(xx,error_mean_mat[:,1,3],yerr=error_var_mat[:,1,3]/np.sqrt(nTest),c='r',linewidth=3,label='ZIG');
 
     plt.draw();
     #labels = [l.get_text() for l in ax2.get_yticklabels()]
@@ -3309,7 +3309,7 @@ def barComp(bars1,bars2,bars3,yer1,yer2,yer3,nTest,ylabel):
     ax.bar(r3, bars3, width = barWidth, color = 'blue', edgecolor = '', yerr=yer3/np.sqrt(nTest), capsize=7, label='fano factor')
 
     # general layout
-    plt.xticks([r + barWidth for r in range(len(bars1))], ['Poisson', 'Bernoulli', 'Gamma','SNG'],fontsize=sz)
+    plt.xticks([r + barWidth for r in range(len(bars1))], ['Poisson', 'Bernoulli', 'Gamma','ZIG'],fontsize=sz)
     plt.ylabel(ylabel,fontsize=sz)
     #plt.legend(fontsize=14)
     plt.setp(ax.get_yticklabels(), fontsize=sz)
@@ -3366,7 +3366,7 @@ def barCompBA(bars1,bars2,bars3,yer1,yer2,yer3,nTest,ylabel,pos):
     plt.setp(ax2.get_xticklabels(), fontsize=14);
     plt.setp(ax.get_xticklabels(), visible=False);
     ax2.set_xticks([r + barWidth for r in range(len(bars1))])
-    ax2.set_xticklabels(['Poisson', 'Bernoulli', 'Gamma','SNG']);
+    ax2.set_xticklabels(['Poisson', 'Bernoulli', 'Gamma','ZIG']);
     ax2.legend(fontsize=sz)
     plt.setp(ax.get_yticklabels(), fontsize=sz)
     plt.setp(ax2.get_yticklabels(), fontsize=sz)
@@ -3393,15 +3393,15 @@ def plotRMSEVAE(error_mean_mat, error_mean_bs, xticks=[0,1],lsz=12):
 
     #plt.plot((1-error_mean_mat[:,1,:].min(axis=-1))*100,linewidth=3,label='Normalized Pois')
     #plt.plot((1-error_mean_mat[:,0,:].min(axis=-1))*100,linewidth=3,label='Constrained SNG')
-    #plt.plot((1-error_mean_mat[:,2,:].min(axis=-1))*100,linewidth=3,label='SNG')
+    #plt.plot((1-error_mean_mat[:,2,:].min(axis=-1))*100,linewidth=3,label='ZIG')
     #plt.plot((1-error_mean_mat[:,1,:].mean(axis=-1))*100,linewidth=3,label='Normalized Pois')
     #plt.plot((1-error_mean_mat[:,0,:].mean(axis=-1))*100,linewidth=3,label='Constrained SNG')
-    #plt.plot((1-error_mean_mat[:,2,:].mean(axis=-1))*100,linewidth=3,label='SNG')
+    #plt.plot((1-error_mean_mat[:,2,:].mean(axis=-1))*100,linewidth=3,label='ZIG')
     xx = np.linspace(0,error_mean_mat.shape[0]-1,error_mean_mat.shape[0]);
     kk=error_mean_mat.shape[-1];
     plt.errorbar(xx,(1-error_mean_mat[:,1,:].mean(axis=-1))*100,yerr=np.sqrt(error_mean_mat[:,1,:].var(axis=-1)/kk)*100,linewidth=3,c='b',label='Normalized Pois');
     plt.errorbar(xx,(1-error_mean_mat[:,0,:].mean(axis=-1))*100,yerr=np.sqrt(error_mean_mat[:,0,:].var(axis=-1)/kk)*100,linewidth=3,c='g',label='Constrained SNG');    
-    plt.errorbar(xx,(1-error_mean_mat[:,2,:].mean(axis=-1))*100,yerr=np.sqrt(error_mean_mat[:,2,:].var(axis=-1)/kk)*100,linewidth=3,c='r',label='SNG');
+    plt.errorbar(xx,(1-error_mean_mat[:,2,:].mean(axis=-1))*100,yerr=np.sqrt(error_mean_mat[:,2,:].var(axis=-1)/kk)*100,linewidth=3,c='r',label='ZIG');
     plt.axhline(y=(1-error_mean_bs.mean())*100,linestyle='--',color='orange',linewidth=3,label='Pois');
     plt.legend(fontsize=lsz)
     plt.ylabel('% Reduced MSE', fontsize=fsz);
@@ -3496,7 +3496,7 @@ def plotSampleRatemVAE(Y_real, y_poisson, y_gammar, y_sngr, hd, ss=0,bins=36,fsz
     ax3.xaxis.set_major_locator(ticker.MaxNLocator(nbins=4,min_n_ticks=4,prune=None))  
     ax3.yaxis.set_major_locator(ticker.MaxNLocator(nbins=4,min_n_ticks=4,prune=None))  
     ax3.xaxis.set_major_formatter(ticker.FormatStrFormatter('%.1f'))
-    ax3.set_title('SNG',fontsize=fsz,fontweight='bold');
+    ax3.set_title('ZIG',fontsize=fsz,fontweight='bold');
     plt.tight_layout();    
     return fig
 
@@ -3582,7 +3582,7 @@ def plotSampleVarmVAE(Y_real, y_poisson, y_gammar, y_sngr, hd, ss=0,bins=36,fsz=
     ax3.xaxis.set_major_locator(ticker.MaxNLocator(nbins=4,min_n_ticks=4,prune=None))  
     ax3.yaxis.set_major_locator(ticker.MaxNLocator(nbins=4,min_n_ticks=4,prune=None))  
     ax3.xaxis.set_major_formatter(ticker.FormatStrFormatter('%.1f'))
-    ax3.set_title('SNG',fontsize=fsz,fontweight='bold');
+    ax3.set_title('ZIG',fontsize=fsz,fontweight='bold');
     plt.tight_layout();    
     return fig
 
@@ -3634,7 +3634,7 @@ def plotLatVAE(X_proj_poi, X_proj_sng, X_proj_sngr, hd, fsz=16):
     ax3.xaxis.set_major_locator(ticker.MaxNLocator(nbins=4,min_n_ticks=4,prune=None))  
     ax3.yaxis.set_major_locator(ticker.MaxNLocator(nbins=4,min_n_ticks=4,prune=None))  
     ax3.xaxis.set_major_formatter(ticker.FormatStrFormatter('%.1f'))
-    ax3.set_title('SNG',fontsize=fsz,fontweight='bold');
+    ax3.set_title('ZIG',fontsize=fsz,fontweight='bold');
     
     axins = fig.add_axes([0.99, 0.16, 0.01, 0.78]); # left/right, up/down, width, height
     cbar = fig.colorbar(im,ticks=[((hd[:]+180)/360).min(),0.25,0.5,0.75,1], cax=axins);
