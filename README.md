@@ -8,7 +8,14 @@ A Jupyter Notebook tutorial is available in the code folder. There're more examp
 
 ## Installation
 
-The code is written in Python 3.6. In addition to standard scientific Python libraries (numpy, scipy, matplotlib), the code expects: Tensorflow (>=1.9.0)
+The code is written in Python 3.6. In addition to standard scientific Python libraries (numpy, scipy, matplotlib), the code expects: Tensorflow (=1.9.0). 
+
+The code doesn't support for Tensorflow 2 so far. Cumol (thanks!) mentioned in the Issues that you can try fixing it by replacing the line ```import tensorflow as tf``` in the relevant code files as:
+
+```
+import tensorflow.compat.v1 as tf
+tf.disable_v2_behavior()
+```
 
 To download this code, run `git clone https://github.com/zhd96/zig.git`
 
